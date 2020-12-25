@@ -1,0 +1,1 @@
+Assembly: Nhập 2 chuỗi a, b. Tìm chuỗi a xuất hiện bao nhiêu lần trong xâu b, vị trí các lần xuất hiện đó?
