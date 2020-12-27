@@ -1,4 +1,3 @@
-%include		'functions.asm'
 section .data
 	askStrA	db	"Nhap vao chuoi a: ", 0h
 	askStrB 	db	"Nhap vao chuoi b: ", 0h
@@ -15,7 +14,7 @@ _start:
 	; in ra askStrA
 	mov	eax, askStrA
 	call	sprint
-	
+
 	; nhap str a
 	mov	edx, 255
 	mov	ecx, a
@@ -41,7 +40,7 @@ _start:
 	mov	[lenA], eax
 			;mov eax, [lenA]
 			;call iprintLF
-;_____________________________________________	
+	
 	mov	eax, b
 	call 	slen
 			;call iprintLF
@@ -112,6 +111,107 @@ innerLoopDone:
 exit:
 	mov	eax, msg2
 	call	sprintLF
+	
 	mov	eax, [num]
 	call	iprintLF
-	call 	quit
+	
+	mov	ebx, 0
+	mov	eax, 1
+	int 	80h
+;_______________________________________
+; int slen(string msg)
+
+slen:
+	push	ebx
+	mov	ebx, eax
+nextchar:
+	cmp	byte [eax], 0
+	jz	finished
+	inc	eax
+	jmp	nextchar
+finished:
+	sub	eax, ebx
+	pop	ebx
+	ret
+;________________________________________
+; void sprint(string msg)
+
+sprint:
+	push 	edx
+	push	ecx
+	push	ebx
+	push	eax
+	call	slen		; eax <- slen
+	
+	mov	edx, eax
+	pop	eax		; eax <- string
+	
+	mov	ecx, eax
+	mov	ebx, 1
+	mov	eax, 4
+	int 	80h
+	
+	pop	ebx
+	pop	ecx
+	pop	edx
+	ret
+;_________________________________________
+; void sprintLF(string msg)
+
+sprintLF:
+	call 	sprint
+	
+	push	eax
+	mov	eax, 0ah
+	push	eax
+	mov	eax, esp
+	call	sprint
+	pop	eax
+	pop	eax
+	ret
+;__________________________________________
+;void iprint(int num)
+
+iprint:
+	push	eax
+	push	ecx
+	push	edx
+	push	esi
+	mov	ecx, 0		;counter of how many bytes we need to print in the end
+	
+divideLoop:
+	inc	ecx		; count each byte to print - number of characters
+	mov	edx, 0
+	mov	esi, 10
+	idiv	esi		; div eax by esi
+	add	edx, 48
+	push	edx
+	cmp	eax, 0
+	jnz	divideLoop
+printLoop:
+	dec	ecx
+	mov	eax, esp
+	call 	sprint
+	pop	eax
+	cmp	ecx, 0
+	jnz	printLoop
+	
+	pop	esi
+	pop	edx
+	pop	ecx
+	pop	eax
+	ret
+;___________________________________________
+; void iprintLF(int num)
+
+iprintLF:
+	call iprint
+	
+	push	eax
+	mov	eax, 0ah
+	push	eax
+	mov	eax, esp
+	call	sprint
+	pop	eax
+	pop	eax
+	ret		
