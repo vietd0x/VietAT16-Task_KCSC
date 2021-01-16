@@ -1,0 +1,7 @@
+MASM - Win:
+- bt su dung visual studio 2019 + thu vien Irvine32 ( http://asmirvine.com/gettingStartedVS2019/index.htm )
+- su dung 1 so ham: (tham khao o day: https://youtu.be/YXrDJvxNwak )
+	+ in ra so signed interger (WriteInt)
+	+ nhap chuoi (ReadString)
+	+ in chuoi (WriteString)
+	...
