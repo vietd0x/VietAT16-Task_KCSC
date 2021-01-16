@@ -1,0 +1,3 @@
+﻿  Assembling Main.asm...
+Main.asm(4): warning A4011: multiple .MODEL directives found : .MODEL ignored
+  RevString.vcxproj -> C:\Users\vietd\OneDrive - actvn.edu.vn\Projects\Assembly\LearnAsm\RevString\Debug\RevString.exe
