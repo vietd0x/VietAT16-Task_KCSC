@@ -1,0 +1,2 @@
+C:\Users\vietd\OneDrive - actvn.edu.vn\Projects\Assembly\LearnAsm\MyProj64\x64\Debug\Project64.exe
+C:\Users\vietd\OneDrive - actvn.edu.vn\Projects\Assembly\LearnAsm\MyProj64\x64\Debug\Project64.pdb
