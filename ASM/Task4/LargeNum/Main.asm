@@ -6,6 +6,8 @@ ExitProcess PROTO, deExitCode: DWORD
 Swap PROTO,			; procedure prototype
 	pValX:PTR BYTE,
 	pValY:PTR BYTE
+revArr PROTO,
+		pArr: PTR BYTE
 .data
 	msg1	db	"Nhap so a: ", 0
 	msg2	db	"Nhap so b: ", 0
@@ -35,15 +37,7 @@ main	PROC
 	call	ReadString
 	mov	lenB, eax
 
-	cmp	lenA, eax
-	jge	PREL00P				; lenA >= lenB
-	xchg	lenA, eax
-	xchg	lenB, eax
 	INVOKE Swap, ADDR a, ADDR b
-PREL00P:
-	mov	eax, lenA
-	call	WriteDec
-	call Crlf
 
 	mov	edx, OFFSET a
 	call	WriteString
@@ -56,23 +50,48 @@ PREL00P:
 	INVOKE ExitProcess, 0
 main ENDP
 
-;-------------------------------------------------------
-Swap PROC USES eax esi edi,
-	pValX:PTR BYTE,	; pointer to first integer
-	pValY:PTR BYTE	; pointer to second integer
-;
-; Returns: nothing
-;-------------------------------------------------------
-	mov esi,pValX		; get pointers
-	mov edi,pValY
+;____________________________
+Swap PROC USES edi,
+	pArrA:PTR BYTE,
+	pArrB:PTR BYTE
+;____________________________
+	xor	edi, edi
 
-	mov eax,[esi]		; get first integer
-		mov	edx, eax
-		call WriteString
-		call	Crlf
-	xchg eax,[edi]		; exchange with second
-	mov [esi],eax		; replace first integer
+	mov	edx, pArrA
+	xchg	[edx], pArrB
+	mov	pArrA, [edx]
 	ret
 Swap ENDP
 
+
+
+;____________________________
+revArr PROC USES edi eax ecx esi,
+	pArr: PTR BYTE,
+; IN - ECX - len
+	mov		edi, pArr
+	INVOKE	Str_length, edi		; puts length in EAX
+	;add		edi,eax                  ; point to null byte at end
+
+	mov		ecx, eax
+	mov		esi, 0
+stackIt:
+	xor		eax, eax
+
+	mov		al, [edi + esi]
+	push		eax
+	inc		esi
+	loop		stackIt
+
+	INVOKE	Str_length, edi		; puts length in EAX
+	mov		ecx, eax
+	mov		esi, 0
+popIt:
+	pop		eax
+	mov  BYTE PTR [edi+esi], al
+	inc		esi
+	loop		popIt
+
+	ret
+revArr ENDP
 END main

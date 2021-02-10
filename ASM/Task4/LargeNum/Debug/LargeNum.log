@@ -1,2 +1,4 @@
 ﻿  Assembling Main.asm...
-  LargeNum.vcxproj -> C:\Users\vietd\OneDrive - actvn.edu.vn\VietAT16-Task_KCSC\ASM\Task4\LargeNum\Debug\LargeNum.exe
+Main.asm(61): error A2070: invalid instruction operands
+Main.asm(62): error A2070: invalid instruction operands
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml.exe /c /nologo /Zi /Fo"Debug\Main.obj" /I "C:\irvine" /W3 /errorReport:prompt  /TaMain.asm" exited with code 1.
