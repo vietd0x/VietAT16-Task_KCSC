@@ -1,2 +1,0 @@
-C:\Users\vietd\OneDrive - actvn.edu.vn\VietAT16-Task_KCSC\ASM\Task4\LargeNum\Debug\LargeNum.exe
-C:\Users\vietd\OneDrive - actvn.edu.vn\VietAT16-Task_KCSC\ASM\Task4\LargeNum\Debug\LargeNum.pdb
