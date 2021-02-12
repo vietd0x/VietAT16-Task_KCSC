@@ -9,6 +9,9 @@ INCLUDE	Irvine32.inc
 	CharToInt_sub PROTO,
 		char1: BYTE,
 		char2: BYTE
+	Arr_compare	PROTO,
+		pA: PTR BYTE,
+		pB: PTR BYTE
 .data
 	msg1	db	"Nhap so a: ", 0
 	msg2	db	"Nhap so b: ", 0
@@ -127,14 +130,17 @@ in_ra_tong:
 ;------------------------------SUB---------------------------------
 ; pre-loop index init
 
-
 	mov		esi, 0
 	mov		ebx, 0
 	mov		eax, lenb
 
 	cmp		lena, eax
 	jge		Alonger_SUB				; lenA >= lenB
+	jmp		reB1
 reB:
+	INVOKE	revArr, ADDR a
+	INVOKE	revArr, ADDR b
+reB1:
 	; lenA < lenB
 	mov		ecx, lenb						
 	xor		eax, eax
@@ -189,18 +195,16 @@ LA2_SUB:
 	loop		LA2_SUB
 	jmp		in_ra_hieu
 LA_EQU_SUB:
-	INVOKE	Str_compare, ADDR a, ADDR b
+	INVOKE	Arr_compare, ADDR a, ADDR b
 	je		equal
-	;jb		reB						;b_larger, lenA = lenB    232_123_wrong????
-DH_EQU_1:
-	;mov		sum[esi], '1'
+	ja		in_ra_hieu
+	jb		reB						;b_larger, lenA = lenB    232_123_wrong????
 in_ra_hieu:
 	xor		edx, edx
 	mov		edx, OFFSET msg4
 	call		WriteString
 
 	INVOKE	revArr, ADDR diff
-
 	xor		edx, edx
 	mov		edx, OFFSET diff
 	call		WriteString
@@ -325,10 +329,8 @@ revArr PROC USES edi eax ecx esi,
 	pArr: PTR BYTE,
 ; IN - pArr
 ; 
-
 	mov		edi, pArr
 	INVOKE	Str_length, edi		; puts length in EAX
-	;add		edi,eax                  ; point to null byte at end
 
 	mov		ecx, eax
 	mov		esi, 0
@@ -351,4 +353,43 @@ popIt:
 
 	ret
 revArr ENDP
+;------------------------------------------
+Arr_compare	PROC USES eax edx esi edi,
+	pA: PTR BYTE,
+	pB: PTR BYTE
+; OUT: revArr 
+;	je	equal
+;	ja	a > b
+;	jb	a < b
+;------------------------------
+	mov		esi, pA
+	mov		edi, pB
+
+	INVOKE	revArr, esi
+	INVOKE	revArr, edi
+
+	;mov		edx, esi
+	;call		WriteString
+	;call		Crlf
+
+	;mov		edx, edi
+	;call		WriteString
+	;call		Crlf
+L1:
+	mov		al, [esi]
+	mov		dl, [edi]
+	cmp		al, 0
+	jne		L2
+	cmp		dl, 0
+	jne		L2
+	jmp		L3
+L2:
+	inc		esi
+	inc		edi
+	cmp		al, dl
+	je		L1
+L3:
+	ret
+Arr_compare ENDP
+
 END main

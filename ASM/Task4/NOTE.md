@@ -1,1 +1,0 @@
-<h3>Hiệu sẽ sai khi TM cả 2 ĐK :  số kí tự của dãy a = dãy b và giá trị dãy b > dãy a.</h3>
