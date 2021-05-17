@@ -1,10 +1,10 @@
-![](imgs\re_bell.png)
+![](https://raw.githubusercontent.com/vietd0x/VietAT16-Task_KCSC/master/dCTF/re/imgs/re_bell.png)
 
 Mở ida lên tìm hàm **main** và press holy button `F5` :
 
-![main](imgs\main.png)
+![main](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/re/imgs/main.png?raw=true)
 
-Biến v5 là tham số của hàm **process** nhưng nó đã đc in ra nên ko quan tâm lắm![we_have_v5](imgs\we_have_v5.png)
+Biến v5 là tham số của hàm **process** nhưng nó đã đc in ra nên ko quan tâm lắm![we_have_v5](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/re/imgs/we_have_v5.png?raw=true)
 
 Mò vào **process** function và `F5`: [pseudocode with some variables renamed by me]
 
@@ -34,7 +34,7 @@ __int64 __fastcall process(int Known_var)// we have already known this argument 
 }
 ```
 
-Về cơ bản thì biến vòng lặp chạy `Known_var` lần và so sánh `Input` ta nhập vs biến `Magic` (result of **triangle** func), nếu khác thì `dont_be_0` = 0. Mục tiêu của ta là sau khi thoát loop `dont_be_0` = 1. Giờ mò vào hàm **triangle(Known_var, i)** xem nào, tiếp tục spam `F5` :![triangle](imgs\triangle.png)
+Về cơ bản thì biến vòng lặp chạy `Known_var` lần và so sánh `Input` ta nhập vs biến `Magic` (result of **triangle** func), nếu khác thì `dont_be_0` = 0. Mục tiêu của ta là sau khi thoát loop `dont_be_0` = 1. Giờ mò vào hàm **triangle(Known_var, i)** xem nào, tiếp tục spam `F5` :![triangle](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/re/imgs/triangle.png?raw=true)
 
 code lại hàm này = python:
 
@@ -73,4 +73,4 @@ for i in range(1, Known_var+1):
 r.interactive()
 ```
 
-![flag ne](imgs\flag.png)
+![flag ne](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/re/imgs/flag.png?raw=true)
