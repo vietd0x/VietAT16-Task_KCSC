@@ -1,4 +1,4 @@
-Writeups written by a n00d guy
+Writeups were written by a n00d guy
 
 #### RE:	 [Bell](https://github.com/vietd0x/VietAT16-Task_KCSC/tree/master/dCTF/re)
 
