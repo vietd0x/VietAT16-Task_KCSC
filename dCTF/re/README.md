@@ -34,7 +34,7 @@ __int64 __fastcall process(int Known_var)// we have already known this argument 
 }
 ```
 
-Về cơ bản thì biến vòng lặp chạy `Known_var` lần và so sánh `Input` ta nhập vs biến `Magic` (result of **triangle** func), nếu khác thì `dont_be_0` = 0. Mục tiêu của ta là sau khi thoát loop `dont_be_0` = 1. Giờ mò vào hàm **triangle(Known_var, i)** xem nào, tiếp tục spam `F5` :![triangle](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/re/imgs/triangle.png?raw=true)
+Về cơ bản thì vòng lặp chạy `Known_var` lần và so sánh `Input` ta nhập vs biến `Magic` (result of **triangle** func), nếu khác thì `dont_be_0` = 0. Mục tiêu của ta là sau khi thoát loop để `dont_be_0` = 1. Giờ mò vào hàm **triangle(Known_var, i)** xem nào, tiếp tục spam `F5` :![triangle](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/re/imgs/triangle.png?raw=true)
 
 code lại hàm này = python:
 
