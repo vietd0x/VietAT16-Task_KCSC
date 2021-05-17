@@ -1,4 +1,6 @@
-![pinch_me](C:\Users\vietd\OneDrive - actvn.edu.vn\MyWriteUp\VietAT16-Task_KCSC\dCTF\pwn\Pinch me\imgs\pinch_me.png)
+![pinch_me](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/pwn/Pinch%20me/imgs/pinch_me.png?raw=true)
+
+![checksec](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/pwn/Pinch%20me/imgs/checksec.png?raw=true)
 
 Hàm **main** sẽ gọi đến hàm **vuln**. 
 
@@ -26,9 +28,9 @@ int vuln()
 
 Ta cần overwrite biến v2 = 0x1337C0DE là done
 
-![stack](C:\Users\vietd\OneDrive - actvn.edu.vn\MyWriteUp\VietAT16-Task_KCSC\dCTF\pwn\Pinch me\imgs\stack.png)
+![stack](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/pwn/Pinch%20me/imgs/stack.png?raw=true)
 
 payload = 'A' * 24 + '\xde\xc0\x37\x13'
 
-![flag](C:\Users\vietd\OneDrive - actvn.edu.vn\MyWriteUp\VietAT16-Task_KCSC\dCTF\pwn\Pinch me\imgs\flag.png)
+![flag](https://github.com/vietd0x/VietAT16-Task_KCSC/blob/master/dCTF/pwn/Pinch%20me/imgs/flag.png?raw=true)
 
